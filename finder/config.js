@@ -14,6 +14,7 @@ const config = {
   sideBarInfo: ['Client Name', 'Address', 'Phone'],
   popupInfo: {
       title: 'Client Name',
+      bags: 'Bag or Box',
       entrancePhoto: 'Entrance Photo Link',
       phone: 'Phone',
       address: 'Address',
