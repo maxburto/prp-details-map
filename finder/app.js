@@ -463,7 +463,7 @@ map.on('load', () => {
         geojsonData = data;
         // Add the the layer to the map
 
-        map.loadImage('./finder/marker-icons/shop-15.png', (error, image) => {
+        map.loadImage('./marker-icons/shop-15.png', (error, image) => {
           if (error) throw error;
           map.addImage('symbol-icon', image, { 'sdf': true });
 
