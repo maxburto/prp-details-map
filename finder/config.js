@@ -22,7 +22,7 @@ const config = {
       unit: 'Unit',
       deliveryInstructions: 'Short Description',
       riderFeedback: 'Rider Feedback',
-      riderFeedbackLink: 'Rider Feedback Link',
+      riderFeedbackLink: 'Rider Feedback Link'
     }
   ],
   filters: [
