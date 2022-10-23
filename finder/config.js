@@ -16,9 +16,9 @@ const config = {
   filters: [
     {
       type: 'checkbox',
-      title: 'Devices available: ',
-      columnHeader: 'Devices_available', // Case sensitive - must match spreadsheet entry
-      listItems: ['Computer', 'Wi-Fi', 'Adaptive Laptops'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
+      title: 'Location type: ',
+      columnHeader: 'Location type', // Case sensitive - must match spreadsheet entry
+      listItems: ['House', 'Interior apartment', 'Apartment with an outside facing door'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
     },
     {
       type: 'dropdown',
