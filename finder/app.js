@@ -32,7 +32,7 @@ function createPopup(currentFeature) {
   new mapboxgl.Popup({ closeOnClick: true })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML(
-              '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
+              '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
               +
               '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
               +
