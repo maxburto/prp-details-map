@@ -445,6 +445,8 @@ map.on('load', () => {
           data.properties.id = i;
         });
 
+        console.log(data);
+        
         geojsonData = data;
         // Add the the layer to the map
         map.addLayer({
