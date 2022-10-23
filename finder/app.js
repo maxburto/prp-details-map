@@ -422,7 +422,6 @@ map.on('load', () => {
       url: config.CSV,
       dataType: 'text',
       success: function (csvData) {
-        console.log(csvData);
         makeGeoJSON(csvData);
       },
       error: function (request, status, error) {
@@ -434,9 +433,6 @@ map.on('load', () => {
   });
 
   function makeGeoJSON(csvData) {
-    
-    console.log("makeGeoJSON start");
-    
     csv2geojson.csv2geojson(
       csvData,
       {
@@ -448,7 +444,7 @@ map.on('load', () => {
         data.features.forEach((data, i) => {
           data.properties.id = i;
         });
-        
+
         geojsonData = data;
         // Add the the layer to the map
         map.addLayer({
@@ -467,9 +463,6 @@ map.on('load', () => {
           },
         });
       },
-      
-      console.log("makeGeoJSON end");
-      
     );
 
     map.on('click', 'locationData', (e) => {
