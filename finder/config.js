@@ -5,7 +5,7 @@ const config = {
   style: 'mapbox://styles/mapbox/light-v10',
   accessToken:
     'pk.eyJ1IjoibWF4YnVydG8iLCJhIjoiY2t5MHZwNnI2MDU1bjJ2cGUwYXhqYndpbCJ9.31g_YC48d2c_HDyPD_XhUA',
-  CSV: 'https://docs.google.com/spreadsheets/d/1wHpnaSjdUrgh45iRd-TGiBNqtGukNO0zbbgfTBosjaA/gviz/tq?tqx=out:csv&sheet=data',
+  CSV: 'https://docs.google.com/spreadsheets/d/1TCGYI8tr8qI7Rtcqu-XqobbYHEqin9BpKjNGTKzD9PE/gviz/tq?tqx=out:csv&sheet=data',
   center: [-120.234, 47.398],
   zoom: 6,
   title: 'Replace with your title',
