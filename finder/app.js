@@ -425,7 +425,6 @@ geocoder.on('result', (ev) => {
   const searchResult = ev.result.geometry;
   sortByDistance(searchResult);
 });
-
 map.on('load', () => {
   map.addControl(geocoder, 'top-right');
 
@@ -463,21 +462,29 @@ map.on('load', () => {
 
         geojsonData = data;
         // Add the the layer to the map
-        map.addLayer({
-          id: 'locationData',
-          type: 'circle',
-          source: {
-            type: 'geojson',
-            data: geojsonData,
-          },
-          paint: {
-            'circle-radius': 5, // size of circles
-            'circle-color': '#3D2E5D', // color of circles
-            'circle-stroke-color': 'white',
-            'circle-stroke-width': 1,
-            'circle-opacity': 0.7,
-          },
+
+        map.loadImage('https://docs.mapbox.com/help/demos/using-recolorable-images-in-mapbox-maps/shop-15.png', (error, image) => {
+          if (error) throw error;
+          map.addImage('symbol-icon', image, { 'sdf': true });
+
+          map.addLayer({
+            id: 'locationData',
+            type: 'symbol',
+            source: {
+              type: 'geojson',
+              data: geojsonData,
+            },
+            layout: {
+              'icon-image': 'symbol-icon',
+              'icon-size': 0.5
+            },
+            paint: {
+              'icon-color': ['get', 'Icon Color']
+            }
+          });
+
         });
+
       },
     );
 
