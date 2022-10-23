@@ -34,17 +34,17 @@ function createPopup(currentFeature) {
     .setHTML(
               '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
               +
-              '<<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
+              '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
               +
-              '<h4>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+              '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
               +
-              '<a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"> <h4>' + currentFeature.properties[config.popupInfo.address] + '</h4> </a>'
+              '<a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><h4><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</h4> </a>'
               +
-              '<h4>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
+              '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
               +
-              '<p>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
+              '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
                +
-              '<p>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
+              '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
                +
               '<a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"> <h5> Send the food bank feedback </h5> </a>'
             )
