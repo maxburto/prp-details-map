@@ -22,7 +22,7 @@ const config = {
         'New volunteer orientation',
         'Solo - Solo deliveries and pantry restocks',
         'Group - Ravenna route - Meet for coffee after',
-        'Group - University District route - Meet for coffee aft',
+        'Group - University District route - Meet for coffee aft'
       ],
     },
     {
