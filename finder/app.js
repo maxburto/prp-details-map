@@ -38,7 +38,7 @@ function createPopup(currentFeature) {
               +
               '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
               +
-              '<h4> <a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
+              '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
               +
               '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
               +
@@ -46,7 +46,7 @@ function createPopup(currentFeature) {
                +
               '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
                +
-              '<h5> <a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>'
+              '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>'
             )
     .addTo(map);
 }
