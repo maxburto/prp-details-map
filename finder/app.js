@@ -34,21 +34,19 @@ function createPopup(currentFeature) {
     .setHTML(
               '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
               +
-              '<p>' + currentFeature.properties[config.popupInfo.entrancePhoto] + '</p>'
+              '<<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
               +
-              '<p>' + currentFeature.properties[config.popupInfo.phone] + '</p>'
+              '<h4>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
               +
-              '<p>' + currentFeature.properties[config.popupInfo.address] + '</p>'
+              '<a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"> <h4>' + currentFeature.properties[config.popupInfo.address] + '</h4> </a>'
               +
-              '<p>' + currentFeature.properties[config.popupInfo.addressLink] + '</p>'
-              +
-              '<p>' + currentFeature.properties[config.popupInfo.unit] + '</p>'
+              '<h4>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
               +
               '<p>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
                +
               '<p>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
                +
-              '<p>' + currentFeature.properties[config.popupInfo.riderFeedbackLink] + '</p>'
+              '<a href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"> <h5> Send the food bank feedback </h5> </a>'
             )
     .addTo(map);
 }
