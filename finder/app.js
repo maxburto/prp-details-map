@@ -422,6 +422,7 @@ map.on('load', () => {
       url: config.CSV,
       dataType: 'text',
       success: function (csvData) {
+        console.log(csvData);
         makeGeoJSON(csvData);
       },
       error: function (request, status, error) {
