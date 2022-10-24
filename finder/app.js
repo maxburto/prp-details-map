@@ -240,28 +240,31 @@ function defaultFilter() {
   
     geojSelectFilters.push(config.defaultFilter);
   
-        const removeIds = [];
-        filteredGeojson.features.forEach((feature) => {
-          let selected = true;
-          geojSelectFilters.forEach((filter) => {
-            if (
-              feature.properties[filter[0]].indexOf(filter[1]) < 0 &&
-              selected === true
-            ) {
-              selected = false;
-              removeIds.push(feature.properties.id);
-            } else if (selected === false) {
-              removeIds.push(feature.properties.id);
-            }
-          });
+    if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
+      geojsonData.features.forEach((feature) => {
+        filteredGeojson.features.push(feature);
+      });
+    } else {
+      geojsonData.features.forEach((feature) => {
+        let selected = true;
+        geojSelectFilters.forEach((filter) => {
+          if (
+            !feature.properties[filter[0]].includes(filter[1]) &&
+            selected === true
+          ) {
+            selected = false;
+          }
         });
-        let uniqueRemoveIds = [...new Set(removeIds)];
-        uniqueRemoveIds.forEach(function (id) {
-          const idx = filteredGeojson.features.findIndex(
-            (f) => f.properties.id === id,
-          );
-          filteredGeojson.features.splice(idx, 1);
-        });
+        if (
+          selected === true &&
+          filteredGeojson.features.filter(
+            (f) => f.properties.id === feature.properties.id,
+          ).length === 0
+        ) {
+          filteredGeojson.features.push(feature);
+        }
+      });
+    }
 
   
   console.log(config.defaultFilter);  
@@ -308,6 +311,9 @@ function applyFilters() {
       }
     });
 
+    console.log("geojCheckboxFilters.length "+geojCheckboxFilters.length);
+    console.log("geojSelectFilters.length "+geojSelectFilters.length);
+    
     if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
         filteredGeojson.features.push(feature);
@@ -419,7 +425,7 @@ createFilterObject(config.filters);
 applyFilters();
 filters(config.filters);
 removeFiltersButton();
-defaultFilter();
+//defaultFilter();
 
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken, // Set the access token
