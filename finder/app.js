@@ -490,7 +490,8 @@ map.on('load', () => {
               ],
               'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
               'text-radial-offset': 0.5,
-              'text-justify': 'auto'
+              'text-justify': 'auto',
+               'text-optional': true
             },
             paint: {
               'icon-color': ['get', 'icon-color']
