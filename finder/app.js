@@ -240,6 +240,8 @@ function defaultFilter() {
   
     geojSelectFilters.push(config.defaultFilter);
   
+ 
+  
     if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
         filteredGeojson.features.push(feature);
@@ -425,7 +427,7 @@ createFilterObject(config.filters);
 applyFilters();
 filters(config.filters);
 removeFiltersButton();
-//defaultFilter();
+defaultFilter();
 
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken, // Set the access token
