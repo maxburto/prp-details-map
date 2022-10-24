@@ -270,10 +270,12 @@ function defaultFilter() {
 
     map.getSource('locationData').setData(filteredGeojson);
     buildLocationList(filteredGeojson);
-  
 }
 
 function applyFilters() {
+  
+  defaultFilter();
+  
   const filterForm = document.getElementById('filters');
 
   filterForm.addEventListener('change', function () {
@@ -570,7 +572,6 @@ map.on('load', () => {
     });
     buildLocationList(geojsonData);
    
-    defaultFilter();
     
   }
 });
