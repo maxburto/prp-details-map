@@ -264,7 +264,8 @@ function defaultFilter() {
         });
 
   
-    console.log(filteredGeojson);
+  console.log(config.defaultFilter);  
+  console.log(filteredGeojson);
       
 }
 
@@ -418,6 +419,7 @@ createFilterObject(config.filters);
 applyFilters();
 filters(config.filters);
 removeFiltersButton();
+defaultFilter();
 
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken, // Set the access token
@@ -559,7 +561,6 @@ map.on('load', () => {
       map.getCanvas().style.cursor = '';
     });
     buildLocationList(geojsonData);
-    defaultFilter();
   }
 });
 
