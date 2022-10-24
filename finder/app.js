@@ -510,11 +510,15 @@ map.on('load', () => {
           data.properties.id = i;
         });
 
-        geojsonData = data;
+        //geojsonData = data;
 
         // Filter by Location ID
-        const scoreArr = Object.entries(geojsonData);
-        console.log(geojsonData);
+        const dataArr = Object.entries(data);
+        const filteredArr = dataArr.filter(function ([key, value]) {
+          return value === config.defaultFilter;
+        });
+
+        geojsonData = Object.fromEntries(data);
 
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
