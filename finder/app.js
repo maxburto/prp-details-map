@@ -516,18 +516,10 @@ map.on('load', () => {
 
         //geojsonData = data;
 
-        geojCheckboxFilters.forEach((filter) => {
           geojsonData.features.forEach((feature) => {
-            if (feature.properties[filter[0]].includes(filter[1])) {
-              if (
-                filteredGeojson.features.filter(
-                  (f) => f.properties.id === feature.properties.id,
-                ).length === 0
-              ) {
+            if (feature.properties.CampaignId === "UDFB") {
                 filteredGeojson.features.push(feature);
               }
-            }
-        });
         });
 
         console.log(filteredGeojson);
