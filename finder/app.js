@@ -476,7 +476,16 @@ map.on('load', () => {
             },
             layout: {
               'icon-image': 'symbol-icon',
-              'icon-size': 0.5
+              'icon-size': 0.5,
+              "text-field": [
+                "format",
+                   ["get", "name-bag"], {}, // Use default formatting
+                   "\n", {},
+                   ["get", "location-type"],
+                   {
+                        "font-scale": 0.8
+                   }
+              ]
             },
             paint: {
               'icon-color': ['get', 'icon-color']
