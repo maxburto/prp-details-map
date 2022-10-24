@@ -240,37 +240,8 @@ function defaultFilter() {
   
     geojSelectFilters.push(config.defaultFilter);
   
-    console.log(geojsonData.features);
+    console.log(geojSelectFilters);
   
-    if (geojSelectFilters.length === 0) {
-      geojsonData.features.forEach((feature) => {
-        filteredGeojson.features.push(feature);
-      });
-    } else {
-      geojsonData.features.forEach((feature) => {
-        let selected = true;
-        geojSelectFilters.forEach((filter) => {
-          if (
-            !feature.properties[filter[0]].includes(filter[1]) &&
-            selected === true
-          ) {
-            selected = false;
-          }
-        });
-        if (
-          selected === true &&
-          filteredGeojson.features.filter(
-            (f) => f.properties.id === feature.properties.id,
-          ).length === 0
-        ) {
-          filteredGeojson.features.push(feature);
-        }
-      });
-    }
-
-  
-  console.log(config.defaultFilter);  
-  console.log(filteredGeojson);
       
 }
 
@@ -571,6 +542,7 @@ map.on('load', () => {
       map.getCanvas().style.cursor = '';
     });
     buildLocationList(geojsonData);
+    console.log(geojsonData.features);
   }
 });
 
