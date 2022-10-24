@@ -240,28 +240,29 @@ function defaultFilter() {
   
     geojSelectFilters.push(config.defaultFilter);
   
-    const removeIds = [];
-    filteredGeojson.features.forEach((feature) => {
-    let selected = true;
-    geojSelectFilters.forEach((filter) => {
-    if (
-      feature.properties[filter[0]].indexOf(filter[1]) < 0 &&
-      selected === true
-    ) {
-      selected = false;
-      removeIds.push(feature.properties.id);
-    } else if (selected === false) {
-      removeIds.push(feature.properties.id);
-    }
-    });
-      
-    let uniqueRemoveIds = [...new Set(removeIds)];
-    uniqueRemoveIds.forEach(function (id) {
-      const idx = filteredGeojson.features.findIndex(
-        (f) => f.properties.id === id,
-      );
-      filteredGeojson.features.splice(idx, 1);
-    });
+        const removeIds = [];
+        filteredGeojson.features.forEach((feature) => {
+          let selected = true;
+          geojSelectFilters.forEach((filter) => {
+            if (
+              feature.properties[filter[0]].indexOf(filter[1]) < 0 &&
+              selected === true
+            ) {
+              selected = false;
+              removeIds.push(feature.properties.id);
+            } else if (selected === false) {
+              removeIds.push(feature.properties.id);
+            }
+          });
+        });
+        let uniqueRemoveIds = [...new Set(removeIds)];
+        uniqueRemoveIds.forEach(function (id) {
+          const idx = filteredGeojson.features.findIndex(
+            (f) => f.properties.id === id,
+          );
+          filteredGeojson.features.splice(idx, 1);
+        });
+
   
     console.log(filteredGeojson);
       
