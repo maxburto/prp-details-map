@@ -274,8 +274,6 @@ function defaultFilter() {
 
 function applyFilters() {
   
-  defaultFilter();
-  
   const filterForm = document.getElementById('filters');
 
   filterForm.addEventListener('change', function () {
@@ -572,6 +570,7 @@ map.on('load', () => {
     });
     buildLocationList(geojsonData);
    
+    defaultFilter();
     
   }
 });
