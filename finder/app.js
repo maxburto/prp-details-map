@@ -240,7 +240,7 @@ function defaultFilter() {
   
     geojSelectFilters.push(config.defaultFilter);
   
-    console.log(geojSelectFilters);
+    //console.log(geojSelectFilters);
   
     if (geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
@@ -273,6 +273,7 @@ function defaultFilter() {
 }
 
 function applyFilters() {
+  console.log('applyFilters');
   
   const filterForm = document.getElementById('filters');
 
@@ -293,7 +294,7 @@ function applyFilters() {
           Object.entries(objs).forEach(([, value]) => {
             if (value.includes(filter.value)) {
               const geojFilter = [objs.header, filter.value];
-              console.log([objs.header, filter.value]);
+              //console.log([objs.header, filter.value]);
               geojCheckboxFilters.push(geojFilter);
             }
           });
@@ -304,7 +305,7 @@ function applyFilters() {
           Object.entries(objs).forEach(([, value]) => {
             if (value.includes(filter.value)) {
               const geojFilter = [objs.header, filter.value];
-              console.log([objs.header, filter.value]);
+              //console.log([objs.header, filter.value]);
               geojSelectFilters.push(geojFilter);
             }
           });
@@ -312,10 +313,10 @@ function applyFilters() {
       }
     });
 
-    console.log("geojCheckboxFilters.length "+geojCheckboxFilters.length);
-    console.log("geojSelectFilters.length "+geojSelectFilters.length);
+    //console.log("geojCheckboxFilters.length "+geojCheckboxFilters.length);
+    //console.log("geojSelectFilters.length "+geojSelectFilters.length);
   
-    console.log(geojsonData);
+    //console.log(geojsonData);
     
     if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
@@ -517,7 +518,7 @@ map.on('load', () => {
 
         geojSelectFilters.push(config.defaultFilter);
 
-        console.log(geojSelectFilters);
+        //console.log(geojSelectFilters);
 
         if (geojSelectFilters.length === 0) {
           geojsonData.features.forEach((feature) => {
@@ -545,7 +546,7 @@ map.on('load', () => {
           });
         }
 
-        console.log(filteredGeojson);    
+        //console.log(filteredGeojson);    
         
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
