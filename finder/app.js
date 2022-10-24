@@ -570,7 +570,41 @@ map.on('load', () => {
     });
     buildLocationList(geojsonData);
    
-    defaultFilter();
+    const geojSelectFilters = [];
+    filteredGeojson.features = [];
+  
+    geojSelectFilters.push(config.defaultFilter);
+  
+    console.log(geojSelectFilters);
+  
+    if (geojSelectFilters.length === 0) {
+      geojsonData.features.forEach((feature) => {
+        filteredGeojson.features.push(feature);
+      });
+    } else {
+      geojsonData.features.forEach((feature) => {
+        let selected = true;
+        geojSelectFilters.forEach((filter) => {
+          if (
+            !feature.properties[filter[0]].includes(filter[1]) &&
+            selected === true
+          ) {
+            selected = false;
+          }
+        });
+        if (
+          selected === true &&
+          filteredGeojson.features.filter(
+            (f) => f.properties.id === feature.properties.id,
+          ).length === 0
+        ) {
+          filteredGeojson.features.push(feature);
+        }
+      });
+    }
+
+    map.getSource('locationData').setData(filteredGeojson);
+    buildLocationList(filteredGeojson);
     
   }
 });
