@@ -516,8 +516,20 @@ map.on('load', () => {
 
         //geojsonData = data;
 
-        const scoreArr = data.features.properties.filter(scoreArr => scoreArr.CampaignId === "UDFB");
-        console.log(scoreArr);
+        geojCheckboxFilters.forEach((filter) => {
+          geojsonData.features.forEach((feature) => {
+            if (feature.properties[filter[0]].includes(filter[1])) {
+              if (
+                filteredGeojson.features.filter(
+                  (f) => f.properties.id === feature.properties.id,
+                ).length === 0
+              ) {
+                filteredGeojson.features.push(feature);
+              }
+            }
+        });
+
+        console.log(filteredGeojson);
 
         // Filter by Location ID
         //const dataArr = data.filter(function(locationId) {
