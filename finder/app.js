@@ -499,6 +499,7 @@ map.on('load', () => {
   function makeGeoJSON(csvData) {
 
     // Filter by Location ID
+    console.log(typeof csvData);
     console.log(csvData);
 
     csv2geojson.csv2geojson(
@@ -514,12 +515,6 @@ map.on('load', () => {
         });
 
         geojsonData = data;
-        const geojsonDataParameter = [];
-
-        // Filter by Location ID
-        geojsonDataParameter = geojsonData.filter(function(jsonObject) {
-            return jsonObject.id === config.defaultFilter;
-        });
 
         console.log(geojsonData)
 
