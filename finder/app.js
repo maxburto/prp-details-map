@@ -476,6 +476,8 @@ map.on('load', () => {
             },
             layout: {
               'icon-image': 'symbol-icon',
+              'icon-allow-overlap': true,
+              'icon-ignore-placement': true,
               'icon-size': 0.5,
               "text-field": [
                 "format",
