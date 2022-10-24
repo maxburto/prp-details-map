@@ -478,7 +478,7 @@ map.on('load', () => {
               'icon-image': 'symbol-icon',
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
-              'icon-size': 0.5,
+              'icon-size': 1,
               'text-field': [
                 "format",
                    ["get", "name-bag"], {}, // Use default formatting
