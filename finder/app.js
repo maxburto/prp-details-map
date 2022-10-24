@@ -516,7 +516,7 @@ map.on('load', () => {
 
         //geojsonData = data;
 
-        const scoreArr = data.filter(scoreArr => scoreArr.CampaignId === "UDFB");
+        const scoreArr = data.features.properties.filter(scoreArr => scoreArr.CampaignId === "UDFB");
         console.log(scoreArr);
 
         // Filter by Location ID
