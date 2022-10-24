@@ -606,7 +606,7 @@ map.on('load', () => {
     console.log(filteredGeojson);
     
     buildLocationList(filteredGeojson);
-    map.getSource('locationData').setData(filteredGeojson);
+    //map.getSource('locationData').setData(filteredGeojson);
     
   }
 });
