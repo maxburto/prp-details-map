@@ -509,8 +509,45 @@ map.on('load', () => {
         });
 
         geojsonData = data;
-        // Add the the layer to the map
 
+        // Add default filter
+
+        const geojSelectFilters = [];
+        filteredGeojson.features = [];
+
+        geojSelectFilters.push(config.defaultFilter);
+
+        console.log(geojSelectFilters);
+
+        if (geojSelectFilters.length === 0) {
+          geojsonData.features.forEach((feature) => {
+            filteredGeojson.features.push(feature);
+          });
+        } else {
+          geojsonData.features.forEach((feature) => {
+            let selected = true;
+            geojSelectFilters.forEach((filter) => {
+              if (
+                !feature.properties[filter[0]].includes(filter[1]) &&
+                selected === true
+              ) {
+                selected = false;
+              }
+            });
+            if (
+              selected === true &&
+              filteredGeojson.features.filter(
+                (f) => f.properties.id === feature.properties.id,
+              ).length === 0
+            ) {
+              filteredGeojson.features.push(feature);
+            }
+          });
+        }
+
+        console.log(filteredGeojson);    
+        
+        // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
           if (error) throw error;
           map.addImage('symbol-icon', image, { 'sdf': true });
@@ -520,7 +557,7 @@ map.on('load', () => {
             type: 'symbol',
             source: {
               type: 'geojson',
-              data: geojsonData,
+              data: filteredGeojson,
             },
             layout: {
               'icon-image': 'symbol-icon',
@@ -569,43 +606,6 @@ map.on('load', () => {
       map.getCanvas().style.cursor = '';
     });
     //buildLocationList(geojsonData);
-   
-    const geojSelectFilters = [];
-    filteredGeojson.features = [];
-  
-    geojSelectFilters.push(config.defaultFilter);
-  
-    console.log(geojSelectFilters);
-  
-    if (geojSelectFilters.length === 0) {
-      geojsonData.features.forEach((feature) => {
-        filteredGeojson.features.push(feature);
-      });
-    } else {
-      geojsonData.features.forEach((feature) => {
-        let selected = true;
-        geojSelectFilters.forEach((filter) => {
-          if (
-            !feature.properties[filter[0]].includes(filter[1]) &&
-            selected === true
-          ) {
-            selected = false;
-          }
-        });
-        if (
-          selected === true &&
-          filteredGeojson.features.filter(
-            (f) => f.properties.id === feature.properties.id,
-          ).length === 0
-        ) {
-          filteredGeojson.features.push(feature);
-        }
-      });
-    }
-
-    console.log(filteredGeojson);
-    
-    const geojsonSource = map.getSource('locationData');
     
     buildLocationList(filteredGeojson);
     //map.getSource('locationData').setData(filteredGeojson);
