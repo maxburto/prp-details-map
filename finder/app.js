@@ -242,7 +242,7 @@ function defaultFilter() {
   
  
   
-    if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
+    if (geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
         filteredGeojson.features.push(feature);
       });
