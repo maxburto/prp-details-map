@@ -479,7 +479,7 @@ map.on('load', () => {
               'icon-size': 0.5
             },
             paint: {
-              'icon-color': ['get', 'Icon Color']
+              'icon-color': ['get', 'icon-color']
             }
           });
 
