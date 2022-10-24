@@ -8,6 +8,7 @@ const config = {
   CSV: 'https://docs.google.com/spreadsheets/d/1TCGYI8tr8qI7Rtcqu-XqobbYHEqin9BpKjNGTKzD9PE/gviz/tq?tqx=out:csv&sheet=data',
   center: [-122.335126, 47.640467],
   zoom: 11,
+  defaultFilter: ['Campaign ID', 'UDFB_GD'],
   title: 'PRP drop-off details map',
   description:
     'Replace with information about your application. Ex. You can search by address to sort the list below by distance. You can also filter the list by language support options, which days a location is open, and whether they have devices to use to complete the survey by phone or online.',
