@@ -315,6 +315,8 @@ function applyFilters() {
 
     console.log("geojCheckboxFilters.length "+geojCheckboxFilters.length);
     console.log("geojSelectFilters.length "+geojSelectFilters.length);
+  
+    console.log(geojsonData);
     
     if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
