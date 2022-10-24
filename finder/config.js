@@ -2,6 +2,7 @@
 
 // load parameters from url
 const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 const filterParams = urlParams.get('campaign-id');
 console.log(filterParams);
 
