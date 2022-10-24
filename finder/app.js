@@ -543,10 +543,10 @@ map.on('load', () => {
     });
     buildLocationList(geojsonData);
    
+    defaultFilter();
+    
   }
 });
-
-defaultFilter();
 
 // Modal - popup for filtering results
 const filterResults = document.getElementById('filterResults');
