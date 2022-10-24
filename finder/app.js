@@ -568,7 +568,7 @@ map.on('load', () => {
     map.on('mouseleave', 'locationData', () => {
       map.getCanvas().style.cursor = '';
     });
-    buildLocationList(geojsonData);
+    //buildLocationList(geojsonData);
    
     const geojSelectFilters = [];
     filteredGeojson.features = [];
@@ -603,8 +603,10 @@ map.on('load', () => {
       });
     }
 
-    map.getSource('locationData').setData(filteredGeojson);
+    console.log(filteredGeojson);
+    
     buildLocationList(filteredGeojson);
+    map.getSource('locationData').setData(filteredGeojson);
     
   }
 });
