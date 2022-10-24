@@ -234,14 +234,14 @@ function createFilterObject(filterSettings) {
 }
 
 function defaultFilter() {
-  
+
     const geojSelectFilters = [];
     filteredGeojson.features = [];
-  
+
     geojSelectFilters.push(config.defaultFilter);
-  
+
     //console.log(geojSelectFilters);
-  
+
     if (geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
         filteredGeojson.features.push(feature);
@@ -274,7 +274,7 @@ function defaultFilter() {
 
 function applyFilters() {
   console.log('applyFilters');
-  
+
   const filterForm = document.getElementById('filters');
 
   filterForm.addEventListener('change', function () {
@@ -315,9 +315,9 @@ function applyFilters() {
 
     //console.log("geojCheckboxFilters.length "+geojCheckboxFilters.length);
     //console.log("geojSelectFilters.length "+geojSelectFilters.length);
-  
+
     //console.log(geojsonData);
-    
+
     if (geojCheckboxFilters.length === 0 && geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
         filteredGeojson.features.push(feature);
@@ -497,6 +497,10 @@ map.on('load', () => {
   });
 
   function makeGeoJSON(csvData) {
+
+    // Filter by Location ID
+    console.log(csvData);
+
     csv2geojson.csv2geojson(
       csvData,
       {
@@ -511,14 +515,14 @@ map.on('load', () => {
 
         geojsonData = data;
         const geojsonDataParameter = [];
-        
+
         // Filter by Location ID
-        geojsonData = geojsonData.filter(function(jsonObject) {
+        geojsonDataParameter = geojsonData.filter(function(jsonObject) {
             return jsonObject.id === config.defaultFilter;
         });
-        
+
         console.log(geojsonData)
-        
+
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
           if (error) throw error;
@@ -578,10 +582,10 @@ map.on('load', () => {
       map.getCanvas().style.cursor = '';
     });
     //buildLocationList(geojsonData);
-    
+
     buildLocationList(geojsonData);
     //map.getSource('locationData').setData(filteredGeojson);
-    
+
   }
 });
 
