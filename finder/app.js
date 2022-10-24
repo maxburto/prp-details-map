@@ -240,7 +240,7 @@ function defaultFilter() {
   
     geojSelectFilters.push(config.defaultFilter);
   
- 
+    console.log(geojsonData.features);
   
     if (geojSelectFilters.length === 0) {
       geojsonData.features.forEach((feature) => {
