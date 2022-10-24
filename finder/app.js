@@ -510,6 +510,10 @@ map.on('load', () => {
           data.properties.id = i;
         });
 
+        console.log(typeof data);
+
+        console.log(data);
+
         //geojsonData = data;
 
         // Filter by Location ID
