@@ -269,6 +269,7 @@ function applyFilters() {
           Object.entries(objs).forEach(([, value]) => {
             if (value.includes(filter.value)) {
               const geojFilter = [objs.header, filter.value];
+              console.log([objs.header, filter.value]);
               geojSelectFilters.push(geojFilter);
             }
           });
@@ -342,6 +343,7 @@ function applyFilters() {
 
     map.getSource('locationData').setData(filteredGeojson);
     buildLocationList(filteredGeojson);
+    console.log(filteredGeojson);
   });
 }
 
