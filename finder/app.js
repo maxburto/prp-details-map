@@ -479,7 +479,7 @@ map.on('load', () => {
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
               'icon-size': 0.5,
-              "text-field": [
+              'text-field': [
                 "format",
                    ["get", "name-bag"], {}, // Use default formatting
                    "\n", {},
@@ -487,7 +487,10 @@ map.on('load', () => {
                    {
                         "font-scale": 0.8
                    }
-              ]
+              ],
+              'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+              'text-radial-offset': 0.5,
+              'text-justify': 'auto'
             },
             paint: {
               'icon-color': ['get', 'icon-color']
