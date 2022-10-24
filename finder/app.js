@@ -517,12 +517,11 @@ map.on('load', () => {
         //geojsonData = data;
 
         // Filter by Location ID
-        const dataArr = Object.entries(data);
-        const filteredArr = dataArr.filter(function ([key, value]) {
-          return value === config.defaultFilter;
+        const dataArr = data.filter(function(locationId) {
+          return locationId.CampaignId === config.defaultFilter;
         });
 
-        geojsonData = Object.fromEntries(data);
+        geojsonData = dataArr;
 
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
