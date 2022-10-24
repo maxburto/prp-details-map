@@ -510,43 +510,14 @@ map.on('load', () => {
         });
 
         geojsonData = data;
-
-        // Add default filter
-
-        const geojSelectFilters = [];
-        filteredGeojson.features = [];
-
-        geojSelectFilters.push(config.defaultFilter);
-
-        //console.log(geojSelectFilters);
-
-        if (geojSelectFilters.length === 0) {
-          geojsonData.features.forEach((feature) => {
-            filteredGeojson.features.push(feature);
-          });
-        } else {
-          geojsonData.features.forEach((feature) => {
-            let selected = true;
-            geojSelectFilters.forEach((filter) => {
-              if (
-                !feature.properties[filter[0]].includes(filter[1]) &&
-                selected === true
-              ) {
-                selected = false;
-              }
-            });
-            if (
-              selected === true &&
-              filteredGeojson.features.filter(
-                (f) => f.properties.id === feature.properties.id,
-              ).length === 0
-            ) {
-              filteredGeojson.features.push(feature);
-            }
-          });
-        }
-
-        //console.log(filteredGeojson);    
+        const geojsonDataParameter = [];
+        
+        // Filter by Location ID
+        geojsonData = geojsonData.filter(function(jsonObject) {
+            return jsonObject.id === config.defaultFilter;
+        });
+        
+        console.log(geojsonData)
         
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
@@ -558,7 +529,7 @@ map.on('load', () => {
             type: 'symbol',
             source: {
               type: 'geojson',
-              data: filteredGeojson,
+              data: geojsonData,
             },
             layout: {
               'icon-image': 'symbol-icon',
@@ -608,7 +579,7 @@ map.on('load', () => {
     });
     //buildLocationList(geojsonData);
     
-    buildLocationList(filteredGeojson);
+    buildLocationList(geojsonData);
     //map.getSource('locationData').setData(filteredGeojson);
     
   }
