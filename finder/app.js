@@ -498,10 +498,6 @@ map.on('load', () => {
 
   function makeGeoJSON(csvData) {
 
-    // Filter by Location ID
-    console.log(typeof csvData);
-    console.log(csvData);
-
     csv2geojson.csv2geojson(
       csvData,
       {
@@ -516,7 +512,9 @@ map.on('load', () => {
 
         geojsonData = data;
 
-        console.log(geojsonData)
+        // Filter by Location ID
+        const scoreArr = Object.entries(geojsonData);
+        console.log(geojsonData);
 
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
