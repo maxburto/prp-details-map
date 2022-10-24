@@ -488,6 +488,7 @@ map.on('load', () => {
                         "font-scale": 0.8
                    }
               ],
+              'text-halo-width': 3,
               'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
               'text-radial-offset': 0.5,
               'text-justify': 'auto',
