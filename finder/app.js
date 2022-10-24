@@ -233,6 +233,11 @@ function createFilterObject(filterSettings) {
   });
 }
 
+function urlFilters() {
+  const queryString = window.location.search;
+  console.log(queryString);
+}
+
 function applyFilters() {
   const filterForm = document.getElementById('filters');
 
@@ -253,6 +258,7 @@ function applyFilters() {
           Object.entries(objs).forEach(([, value]) => {
             if (value.includes(filter.value)) {
               const geojFilter = [objs.header, filter.value];
+              console.log([objs.header, filter.value]);
               geojCheckboxFilters.push(geojFilter);
             }
           });
