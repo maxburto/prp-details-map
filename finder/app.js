@@ -528,6 +528,7 @@ map.on('load', () => {
               }
             }
         });
+        });
 
         console.log(filteredGeojson);
 
