@@ -537,7 +537,7 @@ map.on('load', () => {
         //  return locationId.CampaignId === config.defaultFilter;
         //});
 
-        geojsonData = data;
+        geojsonData = filteredGeojson;
 
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
