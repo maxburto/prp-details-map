@@ -1,7 +1,7 @@
 /* global config csv2geojson turf Assembly $ */
 'use strict';
 
-console.log(feature.properties);
+console.log(config.defaultFilter);
 
 mapboxgl.accessToken = config.accessToken;
 const columnHeaders = config.sideBarInfo;
