@@ -37,7 +37,7 @@ function createPopup(currentFeature) {
   let popupHTML = '';
 
   if (config.defaultFilter.preview) {
-    popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
+    popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
     +
     '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
     +
