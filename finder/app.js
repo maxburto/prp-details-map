@@ -39,7 +39,9 @@ function createPopup(currentFeature) {
   if (config.defaultFilter.preview) {
     popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
     +
-    '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+    '<h4><b>Details: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+    +
+    '<h4><b>Route: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
     +
     '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Map link</b></h4>';
   } else {
