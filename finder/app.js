@@ -1,6 +1,8 @@
 /* global config csv2geojson turf Assembly $ */
 'use strict';
 
+console.log(feature.properties);
+
 mapboxgl.accessToken = config.accessToken;
 const columnHeaders = config.sideBarInfo;
 
@@ -522,6 +524,7 @@ map.on('load', () => {
             console.log(feature.properties.CampaignId);
             //Object.values(feature.properties).includes("Bradley");
             if (Object.values(feature.properties).includes(config.defaultFilter)) {
+                console.log(feature.properties);
                 filteredGeojson.features.push(feature);
             }
         });
