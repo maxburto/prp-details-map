@@ -19,7 +19,7 @@ const detailedCSV = 'https://docs.google.com/spreadsheets/d/1TCGYI8tr8qI7Rtcqu-X
 const previewCSV = 'https://docs.google.com/spreadsheets/d/1TCGYI8tr8qI7Rtcqu-XqobbYHEqin9BpKjNGTKzD9PE/gviz/tq?tqx=out:csv&sheet=preview';
 let outputCSV = '';
 
-if (previewParams = true) {
+if (previewParams === "true") {
   outputCSV = previewCSV;
   outputCTitle = previewTitle;
 } else {
