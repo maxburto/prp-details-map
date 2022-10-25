@@ -534,6 +534,8 @@ map.on('load', () => {
 
         data = filteredGeojson;
 
+        filteredGeojson.features.length = 0;
+
         // Filter by Location ID
         //const dataArr = data.filter(function(locationId) {
         //  return locationId.CampaignId === config.defaultFilter;
