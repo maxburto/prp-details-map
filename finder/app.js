@@ -11,6 +11,10 @@ const filteredGeojson = {
   type: 'FeatureCollection',
   features: [],
 };
+const defaultGeojson = {
+  type: 'FeatureCollection',
+  features: [],
+};
 
 const map = new mapboxgl.Map({
   container: 'map',
@@ -526,15 +530,11 @@ map.on('load', () => {
             //Object.values(feature.properties).includes("Bradley");
             if (Object.values(feature.properties).includes(config.defaultFilter.CampaignId)) {
                 console.log(feature.properties);
-                filteredGeojson.features.push(feature);
+                defaultGeojson.features.push(feature);
             }
         });
 
-        console.log(filteredGeojson);
-
-        data = filteredGeojson;
-
-        filteredGeojson.features.length = 0;
+        data = defaultGeojson;
 
         // Filter by Location ID
         //const dataArr = data.filter(function(locationId) {
