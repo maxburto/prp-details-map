@@ -7,6 +7,10 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const filterParams = urlParams.get('campaign-id');
 const previewParams = urlParams.get('preview');
+
+const previewTitle = "PRP drop-off preview map";
+const detailsTitle = "PRP drop-off details map";
+
 console.log(filterParams);
 
 // Choose to load either the full details sheet, or the review sheet
@@ -14,7 +18,7 @@ const detailedCSV = 'https://docs.google.com/spreadsheets/d/1TCGYI8tr8qI7Rtcqu-X
 const previewCSV = 'https://docs.google.com/spreadsheets/d/1TCGYI8tr8qI7Rtcqu-XqobbYHEqin9BpKjNGTKzD9PE/gviz/tq?tqx=out:csv&sheet=preview';
 let outputCSV = '';
 
-if (previewParams) {
+if (previewParams = true) {
   outputCSV = previewCSV;
 } else {
   outputCSV = detailedCSV;
