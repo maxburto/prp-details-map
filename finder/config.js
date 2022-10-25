@@ -1,4 +1,4 @@
-//https://maxburto.github.io/prp-details-map/finder/?campaign-id=UDFB_GD
+//https://maxburto.github.io/prp-details-map/finder/?campaign-id=UDFB_GD&preview=true
 
 'use strict';
 
