@@ -10,6 +10,7 @@ const previewParams = urlParams.get('preview');
 
 const previewTitle = "PRP drop-off preview map";
 const detailsTitle = "PRP drop-off details map";
+let outputCTitle = '';
 
 console.log(filterParams);
 
@@ -20,8 +21,10 @@ let outputCSV = '';
 
 if (previewParams = true) {
   outputCSV = previewCSV;
+  outputCTitle = previewTitle;
 } else {
   outputCSV = detailedCSV;
+  outputCTitle = detailsTitle;
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -36,9 +39,9 @@ const config = {
     CampaignId: filterParams,
     preview: previewParams
   },
-  title: 'PRP drop-off details map',
+  title: outputCTitle,
   description:
-    'Replace with information about your application. Ex. You can search by address to sort the list below by distance. You can also filter the list by language support options, which days a location is open, and whether they have devices to use to complete the survey by phone or online.',
+    'This map shows the families and seniors who our volunteers support every week by using their bikes to deliver groceries to them for our partner food banks. You can search by address to sort the list below by distance. You can also filter the list by group or solo route and if the deliver is to a house or apartment. Once you signup to volunteer a link to the fully delivery details will be emailed to you.',
   sideBarInfo: ['Client Name', 'Address', 'Phone'],
   popupInfo: {
       title: 'Client Name',
