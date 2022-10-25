@@ -38,21 +38,29 @@ function createPopup(currentFeature) {
   new mapboxgl.Popup({ closeOnClick: true })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML(
-              '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
-              +
-              '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
-              +
-              '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
-              +
-              '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
-              +
-              '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
-              +
-              '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
-               +
-              '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
-               +
-              '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>'
+              if (previewParams) {
+                '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
+                +
+                '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+                +
+                '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Map link</b></h4>'
+              } else {
+                '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
+                +
+                '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
+                +
+                '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+                +
+                '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
+                +
+                '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
+                +
+                '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
+                 +
+                '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
+                 +
+                '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>'
+              }
             )
     .addTo(map);
 }
