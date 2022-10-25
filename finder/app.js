@@ -518,15 +518,10 @@ map.on('load', () => {
 
           data.features.forEach((feature) => {
             console.log("data.features: "+feature);
-            console.log(Object.values(feature.properties).includes("UDFB_GD"));
+            //console.log(Object.values(feature.properties).includes("UDFB_GD"));
             console.log(feature.properties.CampaignId);
             //Object.values(feature.properties).includes("Bradley");
-            if (feature.properties["CampaignId"] === config.CampaignId) {
-                console.log(true);
-                filteredGeojson.features.push(feature);
-            }
-            if (feature.properties.CampaignId === config.CampaignId) {
-                console.log(true);
+            if (Object.values(feature.properties).includes(config.defaultFilter)) {
                 filteredGeojson.features.push(feature);
             }
         });
