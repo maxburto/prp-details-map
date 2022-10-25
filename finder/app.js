@@ -522,9 +522,9 @@ map.on('load', () => {
             console.log("data.features: "+feature);
             //console.log(Object.values(feature.properties).includes("UDFB_GD"));
             console.log(config.defaultFilter);
-            console.log(feature.properties === config.defaultFilter);
+            console.log(feature.properties === config.defaultFilter.CampaignId);
             //Object.values(feature.properties).includes("Bradley");
-            if (Object.values(feature.properties).includes(config.defaultFilter)) {
+            if (Object.values(feature.properties).includes(config.defaultFilter.CampaignId)) {
                 console.log(feature.properties);
                 filteredGeojson.features.push(feature);
             }
