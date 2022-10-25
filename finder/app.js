@@ -518,8 +518,8 @@ map.on('load', () => {
 
           data.features.forEach((feature) => {
             console.log("data.features: "+feature);
-            console.log(feature.properties);
-            if (feature.properties.CampaignId === "UDFB") {
+            console.log(feature.properties["CampaignId"]);
+            if (feature.properties["CampaignId"] === "UDFB") {
                 filteredGeojson.features.push(feature);
               }
         });
