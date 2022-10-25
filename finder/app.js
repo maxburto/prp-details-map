@@ -521,7 +521,8 @@ map.on('load', () => {
           data.features.forEach((feature) => {
             console.log("data.features: "+feature);
             //console.log(Object.values(feature.properties).includes("UDFB_GD"));
-            console.log(feature.properties.CampaignId);
+            console.log(config.defaultFilter);
+            console.log(feature.properties === config.defaultFilter);
             //Object.values(feature.properties).includes("Bradley");
             if (Object.values(feature.properties).includes(config.defaultFilter)) {
                 console.log(feature.properties);
