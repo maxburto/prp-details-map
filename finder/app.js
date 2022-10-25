@@ -6,32 +6,6 @@ console.log(config.defaultFilter);
 mapboxgl.accessToken = config.accessToken;
 const columnHeaders = config.sideBarInfo;
 
-let popupHTML = '';
-
-if (config.defaultFilter.preview) {
-  popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
-  +
-  '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
-  +
-  '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Map link</b></h4>';
-} else {
-  popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
-  +
-  '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
-  +
-  '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
-  +
-  '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
-  +
-  '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
-  +
-  '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
-   +
-  '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
-   +
-  '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>';
-}
-
 let geojsonData = {};
 const filteredGeojson = {
   type: 'FeatureCollection',
@@ -59,6 +33,33 @@ function flyToLocation(currentFeature) {
 
 function createPopup(currentFeature) {
   const popups = document.getElementsByClassName('mapboxgl-popup');
+
+  let popupHTML = '';
+
+  if (config.defaultFilter.preview) {
+    popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
+    +
+    '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+    +
+    '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Map link</b></h4>';
+  } else {
+    popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
+    +
+    '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
+    +
+    '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+    +
+    '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
+    +
+    '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
+    +
+    '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
+     +
+    '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
+     +
+    '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>';
+  }
+
   /** Check if there is already a popup on the map and if so, remove it */
   if (popups[0]) popups[0].remove();
   new mapboxgl.Popup({ closeOnClick: true })
