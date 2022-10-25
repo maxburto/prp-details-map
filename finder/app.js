@@ -518,7 +518,7 @@ map.on('load', () => {
 
           data.features.forEach((feature) => {
             console.log("data.features: "+feature);
-            console.log(feature.properties["CampaignId"]);
+            console.log(Object.values(feature.properties).includes("UDFB_GD"));
             console.log(feature.properties.CampaignId);
             //Object.values(feature.properties).includes("Bradley");
             if (feature.properties["CampaignId"] === config.CampaignId) {
