@@ -36,7 +36,7 @@ function createPopup(currentFeature) {
 
   let popupHTML = '';
 
-  if (config.defaultFilter.preview) {
+  if (config.defaultFilter.preview === "true") {
     popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
     +
     '<h4><b>Details: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
