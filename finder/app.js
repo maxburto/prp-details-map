@@ -520,7 +520,7 @@ map.on('load', () => {
             console.log("data.features: "+feature);
             console.log(feature.properties["CampaignId"]);
             console.log(feature.properties.CampaignId);
-            Object.values(person).includes("Bradley");
+            //Object.values(feature.properties).includes("Bradley");
             if (feature.properties["CampaignId"] === config.CampaignId) {
                 console.log(true);
                 filteredGeojson.features.push(feature);
