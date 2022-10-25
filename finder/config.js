@@ -29,7 +29,7 @@ if (previewParams === "true") {
 
 // eslint-disable-next-line no-unused-vars
 const config = {
-  style: 'mapbox://styles/mapbox/outdoors-v11',
+  style: 'mapbox://styles/maxburto/cl9lxhtgt000j14qh5hwk08ra',
   accessToken:
     'pk.eyJ1IjoibWF4YnVydG8iLCJhIjoiY2t5MHZwNnI2MDU1bjJ2cGUwYXhqYndpbCJ9.31g_YC48d2c_HDyPD_XhUA',
   CSV: outputCSV,
