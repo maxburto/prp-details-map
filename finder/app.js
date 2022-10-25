@@ -8,7 +8,7 @@ const columnHeaders = config.sideBarInfo;
 
 let popupHTML = '';
 
-if (config.preview.previewParams) {
+if (config.defaultFilter.preview) {
   popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
   +
   '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
