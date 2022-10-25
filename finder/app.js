@@ -519,7 +519,13 @@ map.on('load', () => {
           data.features.forEach((feature) => {
             console.log("data.features: "+feature);
             console.log(feature.properties["CampaignId"]);
+            console.log(feature.properties.CampaignId);
+            Object.values(person).includes("Bradley");
             if (feature.properties["CampaignId"] === config.CampaignId) {
+                console.log(true);
+                filteredGeojson.features.push(feature);
+            }
+            if (feature.properties.CampaignId === config.CampaignId) {
                 console.log(true);
                 filteredGeojson.features.push(feature);
             }
