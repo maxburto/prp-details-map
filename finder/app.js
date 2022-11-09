@@ -577,7 +577,7 @@ map.on('load', () => {
                 "format",
                    ["get", "name-bag"], {}, // Use default formatting
                    "\n", {},
-                   ["get", "location-type"],
+                   ["get", "location-type-route"],
                    {
                         "font-scale": 0.8
                    }
