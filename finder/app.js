@@ -648,6 +648,14 @@ function forwardGeocoder(query) {
       matchingFeatures.push(feature);
     }
   }
+
+  //map.flyTo({
+  //  center: [(Math.random() - 0.5) * 360, (Math.random() - 0.5) * 100],
+  //  essential: true // this animation is considered essential with respect to prefers-reduced-motion
+  //});
+
+  console.log(matchingFeatures);
+
   return matchingFeatures;
 }
 
@@ -657,7 +665,7 @@ if (config.defaultFilter.preview === "false") {
     new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     localGeocoder: forwardGeocoder,
-    marker: true, // Use the geocoder's default marker style
+    //marker: true, // Use the geocoder's default marker style
     zoom: 14,
     placeholder: 'Enter search e.g. Lincoln Park',
     mapboxgl: mapboxgl
