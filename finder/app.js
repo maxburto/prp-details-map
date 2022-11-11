@@ -450,8 +450,8 @@ filters(config.filters);
 removeFiltersButton();
 
 
-
 const geocoder = new MapboxGeocoder({
+  console.log("geocoder setup");
   accessToken: mapboxgl.accessToken, // Set the access token
   localGeocoder: forwardGeocoder,
   mapboxgl: mapboxgl, // Set the mapbox-gl instance
@@ -490,6 +490,30 @@ function sortByDistance(selectedPoint) {
     listings.removeChild(listings.firstChild);
   }
   buildLocationList(data);
+}
+
+function forwardGeocoder(query) {
+
+  console.log("forwardGeocoder running");
+
+  const matchingFeatures = [];
+  for (const feature of geojsonData.features) {
+    // Handle queries with different capitalization
+    // than the source data by calling toLowerCase().
+    if (
+      feature.properties.name
+      .toLowerCase()
+      .includes(query.toLowerCase())
+    ) {
+      // Add a tree emoji as a prefix for custom
+      // data results using carmen geojson format:
+      // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+      feature['place_name'] = `🌲 ${feature.properties.name}`;
+      feature['center'] = feature.geometry.coordinates;
+      matchingFeatures.push(feature);
+    }
+  }
+  return matchingFeatures;
 }
 
 geocoder.on('result', (ev) => {
@@ -625,30 +649,6 @@ map.on('load', () => {
 
   }
 });
-
-function forwardGeocoder(query) {
-
-  console.log("forwardGeocoder running");
-
-  const matchingFeatures = [];
-  for (const feature of geojsonData.features) {
-    // Handle queries with different capitalization
-    // than the source data by calling toLowerCase().
-    if (
-      feature.properties.name
-      .toLowerCase()
-      .includes(query.toLowerCase())
-    ) {
-      // Add a tree emoji as a prefix for custom
-      // data results using carmen geojson format:
-      // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-      feature['place_name'] = `🌲 ${feature.properties.name}`;
-      feature['center'] = feature.geometry.coordinates;
-      matchingFeatures.push(feature);
-    }
-  }
-  return matchingFeatures;
-}
 
 // Modal - popup for filtering results
 const filterResults = document.getElementById('filterResults');
