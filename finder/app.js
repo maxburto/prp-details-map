@@ -492,34 +492,12 @@ function sortByDistance(selectedPoint) {
   buildLocationList(data);
 }
 
-function forwardGeocoder(query) {
 
-  console.log("forwardGeocoder running");
+//geocoder.on('result', (ev) => {
+//  const searchResult = ev.result.geometry;
+//  sortByDistance(searchResult);
+//});
 
-  const matchingFeatures = [];
-  for (const feature of geojsonData.features) {
-    // Handle queries with different capitalization
-    // than the source data by calling toLowerCase().
-    if (
-      feature.properties.name
-      .toLowerCase()
-      .includes(query.toLowerCase())
-    ) {
-      // Add a tree emoji as a prefix for custom
-      // data results using carmen geojson format:
-      // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-      feature['place_name'] = `🌲 ${feature.properties.name}`;
-      feature['center'] = feature.geometry.coordinates;
-      matchingFeatures.push(feature);
-    }
-  }
-  return matchingFeatures;
-}
-
-geocoder.on('result', (ev) => {
-  const searchResult = ev.result.geometry;
-  sortByDistance(searchResult);
-});
 map.on('load', () => {
 
   // csv2geojson - following the Sheet Mapper tutorial https://www.mapbox.com/impact-tools/sheet-mapper
@@ -645,9 +623,43 @@ map.on('load', () => {
     buildLocationList(geojsonData);
     //map.getSource('locationData').setData(filteredGeojson);
 
-    map.addControl(geocoder, 'top-right');
-
   }
+
+  function forwardGeocoder(query) {
+
+    console.log("forwardGeocoder running");
+
+    const matchingFeatures = [];
+    for (const feature of geojsonData.features) {
+      // Handle queries with different capitalization
+      // than the source data by calling toLowerCase().
+      if (
+        feature.properties.name
+        .toLowerCase()
+        .includes(query.toLowerCase())
+      ) {
+        // Add a tree emoji as a prefix for custom
+        // data results using carmen geojson format:
+        // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+        feature['place_name'] = `🌲 ${feature.properties.name}`;
+        feature['center'] = feature.geometry.coordinates;
+        matchingFeatures.push(feature);
+      }
+    }
+    return matchingFeatures;
+  }
+
+  // Add the control to the map.
+  map.addControl(
+    new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    localGeocoder: forwardGeocoder,
+    zoom: 14,
+    placeholder: 'Enter search e.g. Lincoln Park',
+    mapboxgl: mapboxgl
+    })
+  );
+
 });
 
 // Modal - popup for filtering results
