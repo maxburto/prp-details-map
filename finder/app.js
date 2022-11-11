@@ -625,31 +625,34 @@ map.on('load', () => {
 
   }
 
-  function forwardGeocoder(query) {
+});
 
-    console.log("forwardGeocoder running");
+function forwardGeocoder(query) {
 
-    const matchingFeatures = [];
-    for (const feature of geojsonData.features) {
-      // Handle queries with different capitalization
-      // than the source data by calling toLowerCase().
-      if (
-        feature.properties.name
-        .toLowerCase()
-        .includes(query.toLowerCase())
-      ) {
-        // Add a tree emoji as a prefix for custom
-        // data results using carmen geojson format:
-        // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-        feature['place_name'] = `🏡 ${feature.properties.name}`;
-        feature['center'] = feature.geometry.coordinates;
-        matchingFeatures.push(feature);
-      }
+  console.log("forwardGeocoder running");
+
+  const matchingFeatures = [];
+  for (const feature of geojsonData.features) {
+    // Handle queries with different capitalization
+    // than the source data by calling toLowerCase().
+    if (
+      feature.properties.name
+      .toLowerCase()
+      .includes(query.toLowerCase())
+    ) {
+      // Add a tree emoji as a prefix for custom
+      // data results using carmen geojson format:
+      // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+      feature['place_name'] = `🏡 ${feature.properties.name}`;
+      feature['center'] = feature.geometry.coordinates;
+      matchingFeatures.push(feature);
     }
-    return matchingFeatures;
   }
+  return matchingFeatures;
+}
 
-  // Add the control to the map.
+// Add the control to the map.
+if (config.defaultFilter.preview === "false") {
   map.addControl(
     new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -660,8 +663,7 @@ map.on('load', () => {
     mapboxgl: mapboxgl
     })
   );
-
-});
+}
 
 // Modal - popup for filtering results
 const filterResults = document.getElementById('filterResults');
