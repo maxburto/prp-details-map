@@ -449,8 +449,11 @@ applyFilters();
 filters(config.filters);
 removeFiltersButton();
 
+
+
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken, // Set the access token
+  localGeocoder: forwardGeocoder,
   mapboxgl: mapboxgl, // Set the mapbox-gl instance
   marker: true, // Use the geocoder's default marker style
   zoom: 11,
@@ -621,6 +624,27 @@ map.on('load', () => {
 
   }
 });
+
+function forwardGeocoder(query) {
+  const matchingFeatures = [];
+  for (const feature of geojsonData.features) {
+    // Handle queries with different capitalization
+    // than the source data by calling toLowerCase().
+    if (
+      feature.properties.name
+      .toLowerCase()
+      .includes(query.toLowerCase())
+    ) {
+      // Add a tree emoji as a prefix for custom
+      // data results using carmen geojson format:
+      // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+      feature['place_name'] = `🌲 ${feature.properties.name}`;
+      feature['center'] = feature.geometry.coordinates;
+      matchingFeatures.push(feature);
+    }
+  }
+  return matchingFeatures;
+}
 
 // Modal - popup for filtering results
 const filterResults = document.getElementById('filterResults');
