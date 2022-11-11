@@ -162,6 +162,16 @@ function buildDropDownList(title, listItems) {
   selectContainer.appendChild(selectArrow);
   mainDiv.appendChild(selectContainer);
 
+  const availableRoutes = [];
+
+  data.features.forEach((feature) => {
+
+      availableRoutes.push(feature.properties.Route);
+
+  });
+
+  console.log(availableRoutes);
+
   for (let i = 0; i < listItems.length; i++) {
     const opt = listItems[i];
     const el1 = document.createElement('option');
