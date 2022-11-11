@@ -450,14 +450,14 @@ filters(config.filters);
 removeFiltersButton();
 
 
-const geocoder = new MapboxGeocoder({
-  console.log("geocoder setup");
-  accessToken: mapboxgl.accessToken, // Set the access token
-  localGeocoder: forwardGeocoder,
-  mapboxgl: mapboxgl, // Set the mapbox-gl instance
-  marker: true, // Use the geocoder's default marker style
-  zoom: 11,
-});
+//const geocoder = new MapboxGeocoder({
+//  console.log("geocoder setup");
+//  accessToken: mapboxgl.accessToken, // Set the access token
+//  localGeocoder: forwardGeocoder,
+//  mapboxgl: mapboxgl, // Set the mapbox-gl instance
+//  marker: true, // Use the geocoder's default marker style
+//  zoom: 11,
+//});
 
 function sortByDistance(selectedPoint) {
   const options = { units: 'miles' };
@@ -654,6 +654,7 @@ map.on('load', () => {
     new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     localGeocoder: forwardGeocoder,
+    marker: true, // Use the geocoder's default marker style
     zoom: 14,
     placeholder: 'Enter search e.g. Lincoln Park',
     mapboxgl: mapboxgl
