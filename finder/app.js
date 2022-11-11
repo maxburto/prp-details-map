@@ -649,10 +649,10 @@ function forwardGeocoder(query) {
     }
   }
 
-  //map.flyTo({
-  //  center: [(Math.random() - 0.5) * 360, (Math.random() - 0.5) * 100],
-  //  essential: true // this animation is considered essential with respect to prefers-reduced-motion
-  //});
+  map.flyTo({
+    center: matchingFeatures.center,
+    essential: true // this animation is considered essential with respect to prefers-reduced-motion
+  });
 
   console.log(matchingFeatures);
 
