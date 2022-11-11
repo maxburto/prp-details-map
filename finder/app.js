@@ -539,7 +539,7 @@ map.on('load', () => {
 
         //geojsonData = data;
 
-          data.features.forEach((feature) => {
+        data.features.forEach((feature) => {
             console.log("data.features: "+feature);
             //console.log(Object.values(feature.properties).includes("UDFB_GD"));
             console.log(config.defaultFilter);
@@ -550,10 +550,10 @@ map.on('load', () => {
                 defaultGeojson.features.push(feature);
             }
 
-            defaultGeojson.sort(function(a, b) {
-                return parseFloat(a.feature.properties.name) - parseFloat(b.feature.properties.name);
-            });
+        });
 
+        defaultGeojson.features.sort(function(a, b) {
+            return parseFloat(a.properties.name) - parseFloat(b.properties.name);
         });
 
         data = defaultGeojson;
