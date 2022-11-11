@@ -626,6 +626,9 @@ map.on('load', () => {
 });
 
 function forwardGeocoder(query) {
+
+  console.log("forwardGeocoder running");
+
   const matchingFeatures = [];
   for (const feature of geojsonData.features) {
     // Handle queries with different capitalization
