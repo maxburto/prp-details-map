@@ -59,7 +59,7 @@ function createPopup(currentFeature) {
      +
     '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
      +
-    '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Send the food bank feedback</a> </h5>';
+    '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.riderFeedback] + '" target="_blank">Send the food bank feedback</a> </h5>';
   }
 
   /** Check if there is already a popup on the map and if so, remove it */
