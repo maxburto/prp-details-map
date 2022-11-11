@@ -549,6 +549,11 @@ map.on('load', () => {
                 console.log(feature.properties);
                 defaultGeojson.features.push(feature);
             }
+
+            defaultGeojson.sort(function(a, b) {
+                return parseFloat(a.feature.properties.name) - parseFloat(b.feature.properties.name);
+            });
+
         });
 
         data = defaultGeojson;
@@ -667,7 +672,7 @@ if (config.defaultFilter.preview === "false") {
     localGeocoder: forwardGeocoder,
     //marker: true, // Use the geocoder's default marker style
     zoom: 14,
-    placeholder: 'Enter search e.g. Lincoln Park',
+    placeholder: 'Enter search e.g. Jane D',
     mapboxgl: mapboxgl
     })
   );
