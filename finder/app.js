@@ -641,7 +641,7 @@ map.on('load', () => {
         // Add a tree emoji as a prefix for custom
         // data results using carmen geojson format:
         // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-        feature['place_name'] = `🌲 ${feature.properties.name}`;
+        feature['place_name'] = `🏡 ${feature.properties.name}`;
         feature['center'] = feature.geometry.coordinates;
         matchingFeatures.push(feature);
       }
