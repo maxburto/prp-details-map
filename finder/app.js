@@ -497,7 +497,6 @@ geocoder.on('result', (ev) => {
   sortByDistance(searchResult);
 });
 map.on('load', () => {
-  map.addControl(geocoder, 'top-right');
 
   // csv2geojson - following the Sheet Mapper tutorial https://www.mapbox.com/impact-tools/sheet-mapper
   console.log('loaded');
@@ -621,6 +620,8 @@ map.on('load', () => {
 
     buildLocationList(geojsonData);
     //map.getSource('locationData').setData(filteredGeojson);
+
+    map.addControl(geocoder, 'top-right');
 
   }
 });
