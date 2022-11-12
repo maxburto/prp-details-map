@@ -164,7 +164,7 @@ function buildDropDownList(title, listItems) {
 
   const availableRoutes = [];
 
-  data.features.forEach((feature) => {
+  geojsonData.features.forEach((feature) => {
 
       availableRoutes.push(feature.properties.Route);
 
@@ -454,6 +454,11 @@ function removeFiltersButton() {
   });
 }
 
+createFilterObject(config.filters);
+applyFilters();
+filters(config.filters);
+removeFiltersButton();
+
 
 //const geocoder = new MapboxGeocoder({
 //  console.log("geocoder setup");
@@ -634,11 +639,6 @@ map.on('load', () => {
     //map.getSource('locationData').setData(filteredGeojson);
 
   }
-
-  createFilterObject(config.filters);
-  applyFilters();
-  filters(config.filters);
-  removeFiltersButton();
 
 });
 
