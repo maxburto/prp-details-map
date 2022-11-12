@@ -79,7 +79,8 @@ const config = {
         '[A] East',
         '[A] North',
         '[A] Southeast',
-        '[A] Southeast'
+        '[A] Southeast',
+        '[B] West'
       ],
     },
     {
@@ -100,5 +101,5 @@ const config = {
         'NHL_LFPR',
       ],
     },
-  ],
+  ]
 };

@@ -6,7 +6,14 @@ console.log(config.defaultFilter);
 mapboxgl.accessToken = config.accessToken;
 const columnHeaders = config.sideBarInfo;
 
+const geoJsonFilters = {
+  route: [],
+  locationType: [],
+  CampaignId: []
+}
+
 let geojsonData = {};
+
 const filteredGeojson = {
   type: 'FeatureCollection',
   features: [],
@@ -133,6 +140,10 @@ function buildLocationList(locationData) {
   });
 }
 
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
 // Build dropdown list function
 // title - the name or 'category' of the selection e.g. 'Languages: '
 // defaultValue - the default option for the dropdown list
@@ -162,15 +173,7 @@ function buildDropDownList(title, listItems) {
   selectContainer.appendChild(selectArrow);
   mainDiv.appendChild(selectContainer);
 
-  const availableRoutes = [];
-
-  //geojsonData.features.forEach((feature) => {
-
-      //availableRoutes.push(feature.properties.Route);
-
-  //});
-
-  console.log(geojsonData);
+  console.log(listItems);
 
   for (let i = 0; i < listItems.length; i++) {
     const opt = listItems[i];
@@ -454,11 +457,6 @@ function removeFiltersButton() {
   });
 }
 
-createFilterObject(config.filters);
-applyFilters();
-filters(config.filters);
-removeFiltersButton();
-
 
 //const geocoder = new MapboxGeocoder({
 //  console.log("geocoder setup");
@@ -575,6 +573,73 @@ map.on('load', () => {
 
         geojsonData = data;
 
+        // Replace config 'Route' filter with what is in the GeoJson.
+        // for Routes
+        const availableRoutes = [];
+        var UpdateRouteDone = false;
+        var UpdateLocationTypeDone = false;
+        var UpdateCampaignIdDone = false;
+        var updateLength = 0;
+        console.log("test 1");
+        geojsonData.features.forEach((feature) => {
+          
+              availableRoutes.push(feature.properties.Route);
+        
+        });
+    
+        console.log("test 2");
+        const availableRoutesUnique = availableRoutes.filter(onlyUnique);
+        console.log(availableRoutesUnique);
+
+        for (const x in config.filters) {
+          console.log(x);
+
+           if (Object.values(config.filters[x]).includes('Route')) {
+            console.log("Found the route filter list");
+            console.log(config.filters[x].listItems.length);
+            config.filters[x].listItems.pop();
+            console.log(config.filters[x].listItems.length);
+
+            if (UpdateRouteDone === false) {
+
+              console.log("UpdateRouteDone = false");
+
+              updateLength = config.filters[x].listItems.length;
+
+              for (let i = 0; i < updateLength; i++) {
+                if (config.filters[x].listItems.length > 0) { // only splice array when item is found
+                  config.filters[x].listItems.splice(0, 1); // 2nd parameter means remove one item only
+                  console.log(config.filters[x].listItems);
+                }
+                if (config.filters[x].listItems.length <= 0) {
+                  console.log(config.filters[x].listItems.length);
+                  console.log("empty!");
+                  UpdateRouteDone = true;
+                  BuildUpdateRoute(x);
+
+                }
+
+                function BuildUpdateRoute() {
+
+                  console.log("Starting out at "+config.filters[x].listItems);
+    
+                  availableRoutesUnique.forEach((filter) => {
+    
+                    config.filters[x].listItems.push(filter);
+                    console.log(config.filters[x].listItems);
+          
+                  });
+                }
+
+              }
+            }
+
+          }
+
+
+          
+        }
+
         // Add the the layer to the map
         map.loadImage('./marker-icons/shop-15.png', (error, image) => {
           if (error) throw error;
@@ -613,7 +678,7 @@ map.on('load', () => {
 
         });
 
-      },
+      }
     );
 
     map.on('click', 'locationData', (e) => {
@@ -637,6 +702,11 @@ map.on('load', () => {
 
     buildLocationList(geojsonData);
     //map.getSource('locationData').setData(filteredGeojson);
+
+    createFilterObject(config.filters);
+    applyFilters();
+    filters(config.filters);
+    removeFiltersButton();
 
   }
 
