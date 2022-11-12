@@ -170,7 +170,7 @@ function buildDropDownList(title, listItems) {
 
   //});
 
-  console.log(availableRoutes);
+  console.log(geojsonData);
 
   for (let i = 0; i < listItems.length; i++) {
     const opt = listItems[i];
@@ -543,9 +543,9 @@ map.on('load', () => {
           data.properties.id = i;
         });
 
-        console.log(typeof data);
+        //console.log(typeof data);
 
-        console.log(data);
+        //console.log(data);
 
         //geojsonData = data;
 
