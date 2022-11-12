@@ -164,11 +164,11 @@ function buildDropDownList(title, listItems) {
 
   const availableRoutes = [];
 
-  geojsonData.features.forEach((feature) => {
+  //geojsonData.features.forEach((feature) => {
 
-      availableRoutes.push(feature.properties.Route);
+      //availableRoutes.push(feature.properties.Route);
 
-  });
+  //});
 
   console.log(availableRoutes);
 
@@ -413,7 +413,7 @@ function applyFilters() {
 
     map.getSource('locationData').setData(filteredGeojson);
     buildLocationList(filteredGeojson);
-    console.log(filteredGeojson);
+    //console.log(filteredGeojson);
   });
 }
 
@@ -550,13 +550,13 @@ map.on('load', () => {
         //geojsonData = data;
 
         data.features.forEach((feature) => {
-            console.log("data.features: "+feature);
+            //console.log("data.features: "+feature);
             //console.log(Object.values(feature.properties).includes("UDFB_GD"));
-            console.log(config.defaultFilter);
-            console.log(feature.properties === config.defaultFilter.CampaignId);
+            //console.log(config.defaultFilter);
+            //console.log(feature.properties === config.defaultFilter.CampaignId);
             //Object.values(feature.properties).includes("Bradley");
             if (Object.values(feature.properties).includes(config.defaultFilter.CampaignId)) {
-                console.log(feature.properties);
+                //console.log(feature.properties);
                 defaultGeojson.features.push(feature);
             }
 
@@ -669,7 +669,7 @@ function forwardGeocoder(query) {
     essential: true // this animation is considered essential with respect to prefers-reduced-motion
   });
 
-  console.log(matchingFeatures);
+  //console.log(matchingFeatures);
 
   return matchingFeatures;
 }
