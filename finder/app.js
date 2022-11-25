@@ -46,7 +46,7 @@ function createPopup(currentFeature) {
   if (config.defaultFilter.preview === "true") {
     popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + '</h3>'
     +
-    '<h4><b>Details: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+    '<h4><b>Details: </b>' + currentFeature.properties[config.popupInfo.Phone] + '</h4>'
     +
     '<h4><b>Route: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
     +
@@ -64,9 +64,7 @@ function createPopup(currentFeature) {
     +
     '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
      +
-    '<p><b>Latest Feedback: </b>' + currentFeature.properties[config.popupInfo.riderFeedback] + '</p>'
-     +
-    '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.riderFeedback] + '" target="_blank">Send the food bank feedback</a> </h5>';
+    '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.riderFeedbackLink] + '" target="_blank">Send the food bank feedback</a> </h5>';
   }
 
   /** Check if there is already a popup on the map and if so, remove it */
@@ -543,7 +541,7 @@ map.on('load', () => {
 
         //console.log(typeof data);
 
-        //console.log(data);
+        console.log(data);
 
         //geojsonData = data;
 
@@ -659,9 +657,9 @@ map.on('load', () => {
               'icon-size': 1,
               'text-field': [
                 "format",
-                   ["get", "name-bag"], {}, // Use default formatting
+                   ["get", "Name-Bag"], {}, // Use default formatting
                    "\n", {},
-                   ["get", "location-type-route"],
+                   ["get", "Location-Type-Route"],
                    {
                         "font-scale": 0.8
                    }
@@ -672,7 +670,7 @@ map.on('load', () => {
                'text-optional': true
             },
             paint: {
-              'icon-color': ['get', 'icon-color']
+              'icon-color': ['get', 'Icon-Color']
             }
           });
 

@@ -51,16 +51,15 @@ const config = {
     'This map shows the families and seniors who our volunteers support every week by using their bikes to deliver groceries to them for our partner food banks. You can search by address to sort the list below by distance. You can also filter the list by group or solo route and if the deliver is to a house or apartment. Once you signup to volunteer a link to the fully delivery details will be emailed to you.',
   sideBarInfo: ['name', 'Address', 'Phone'],
   popupInfo: {
-      title: 'name',
-      bags: 'Bag or Box',
-      entrancePhoto: 'Entrance Photo Link',
+      title: 'Name',
+      bags: 'BagOrBox',
+      entrancePhoto: 'EntrancePhotoLink',
       phone: 'Phone',
       address: 'Address',
-      addressLink: 'Google Maps Direct Link',
+      addressLink: 'GoogleMapsDirectLink',
       unit: 'Unit',
-      deliveryInstructions: 'Short Description',
-      riderFeedback: 'Rider Feedback',
-      riderFeedbackLink: 'Rider Feedback Link'
+      deliveryInstructions: 'Notes',
+      riderFeedbackLink: 'RiderFeedbackLink'
     },
   filters: [
      {
@@ -88,6 +87,12 @@ const config = {
       title: 'Location type: ',
       columnHeader: 'location-type', // Case sensitive - must match spreadsheet entry
       listItems: ['House', 'Interior apartment', 'Apartment with an outside facing door', 'Food Bank'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
+    },
+    {
+      type: 'checkbox',
+      title: 'Week: ',
+      columnHeader: 'week', // Case sensitive - must match spreadsheet entry
+      listItems: ['[A]', '[B]'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
     },
     {
       type: 'dropdown',

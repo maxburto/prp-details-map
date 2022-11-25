@@ -79,5 +79,9 @@
   cursor: pointer;
 }
 
+.mapboxgl-popup-close-button {
+    font-size: large;
+}
+
 
   
