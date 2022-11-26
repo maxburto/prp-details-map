@@ -49,7 +49,7 @@ const config = {
   title: outputCTitle,
   description:
     'This map shows the families and seniors who our volunteers support every week by using their bikes to deliver groceries to them for our partner food banks. You can search by address to sort the list below by distance. You can also filter the list by group or solo route and if the deliver is to a house or apartment. Once you signup to volunteer a link to the fully delivery details will be emailed to you.',
-  sideBarInfo: ['name', 'Address', 'Phone'],
+  sideBarInfo: ['Name', 'Address', 'Phone'],
   popupInfo: {
       title: 'Name',
       bags: 'BagOrBox',
