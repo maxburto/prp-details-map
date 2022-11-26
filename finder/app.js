@@ -56,7 +56,7 @@ function createPopup(currentFeature) {
     +
     '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
     +
-    '<h4><b>Phone: </b>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
+    '<h4><b>Phone: </b><a href="tel:+4733378901">+47 333 78 901</a>' + currentFeature.properties[config.popupInfo.phone] + '</h4>'
     +
     '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
     +
@@ -719,7 +719,7 @@ function forwardGeocoder(query) {
     // Handle queries with different capitalization
     // than the source data by calling toLowerCase().
     if (
-      feature.properties.name
+      feature.properties.Name
       .toLowerCase()
       .includes(query.toLowerCase())
     ) {
