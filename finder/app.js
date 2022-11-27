@@ -559,7 +559,7 @@ map.on('load', () => {
         });
 
         defaultGeojson.features.sort(function(a, b) {
-            return parseFloat(a.properties.name) - parseFloat(b.properties.name);
+            return parseFloat(a.properties.Name) - parseFloat(b.properties.Name);
         });
 
         data = defaultGeojson;
@@ -726,7 +726,7 @@ function forwardGeocoder(query) {
       // Add a tree emoji as a prefix for custom
       // data results using carmen geojson format:
       // https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-      feature['place_name'] = `🏡 ${feature.properties.name}`;
+      feature['place_name'] = `🏡 ${feature.properties.Name}`;
       feature['center'] = feature.geometry.coordinates;
       matchingFeatures.push(feature);
     }
