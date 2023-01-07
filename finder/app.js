@@ -56,7 +56,7 @@ function createPopup(currentFeature) {
     +
     '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
     +
-    '<h4><b>Phone: </b><a href="'+currentFeature.properties[config.popupInfo.phone]+'">'+currentFeature.properties[config.popupInfo.phone]+'</a></h4>'
+    '<h4><b>Phone: </b><a href="tel:'+currentFeature.properties[config.popupInfo.phone]+'">'+currentFeature.properties[config.popupInfo.phone]+'</a></h4>'
     +
     '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
     +
