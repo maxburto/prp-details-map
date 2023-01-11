@@ -85,7 +85,7 @@ const config = {
     {
       type: 'checkbox',
       title: 'Location type: ',
-      columnHeader: 'location-type', // Case sensitive - must match spreadsheet entry
+      columnHeader: 'Location-Type', // Case sensitive - must match spreadsheet entry
       listItems: ['House', 'Apartment', 'Food Bank'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
     },
     {
