@@ -541,6 +541,8 @@ map.on('load', () => {
 
         //console.log(typeof data);
 
+        console.log("First load of data");
+
         console.log(data);
 
         //geojsonData = data;

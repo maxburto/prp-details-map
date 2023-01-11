@@ -86,13 +86,7 @@ const config = {
       type: 'checkbox',
       title: 'Location type: ',
       columnHeader: 'location-type', // Case sensitive - must match spreadsheet entry
-      listItems: ['House', 'Interior apartment', 'Apartment with an outside facing door', 'Food Bank'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
-    },
-    {
-      type: 'checkbox',
-      title: 'Week: ',
-      columnHeader: 'week', // Case sensitive - must match spreadsheet entry
-      listItems: ['[A]', '[B]'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
+      listItems: ['House', 'Apartment', 'Food Bank'], // Case sensitive - must match spreadsheet entry; This will take up to six inputs but is best used with a maximum of three;
     },
     {
       type: 'dropdown',
