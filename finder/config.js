@@ -64,7 +64,7 @@ const config = {
   filters: [
      {
       type: 'dropdown',
-      title: 'Route: ',
+      title: 'Route / Week: ',
       columnHeader: 'Route',
       listItems: [
         'New volunteer orientation',
