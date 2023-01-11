@@ -539,7 +539,7 @@ map.on('load', () => {
           data.properties.id = i;
         });
 
-        //console.log(typeof data);
+        console.log(typeof data);
 
         console.log("First load of data");
 
