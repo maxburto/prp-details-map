@@ -4,7 +4,7 @@
 console.log(config.defaultFilter);
 
 mapboxgl.accessToken = config.accessToken;
-const columnHeaders = config.sideBarInfo;
+const columnHeaders = config.popupInfo;
 
 const geoJsonFilters = {
   route: [],
@@ -52,19 +52,7 @@ function createPopup(currentFeature) {
     +
     '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Map link</b></h4>';
   } else {
-    popupHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
-    +
-    '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
-    +
-    '<h4><b>Phone: </b><a href="tel:'+currentFeature.properties[config.popupInfo.phone]+'">'+currentFeature.properties[config.popupInfo.phone]+'</a></h4>'
-    +
-    '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
-    +
-    '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
-    +
-    '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
-     +
-    '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.riderFeedbackLink] + '" target="_blank">Send the food bank feedback</a> </h5>';
+    popupHTML = '<a class="txt-bold btn btn--stroke mr0-ml mr12 px18-ml px6" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank">Navigate to '+currentFeature.properties[config.popupInfo.title]+' at <br>'+ currentFeature.properties[config.popupInfo.address] + '</a>';
   }
 
   /** Check if there is already a popup on the map and if so, remove it */
@@ -76,6 +64,25 @@ function createPopup(currentFeature) {
 }
 
 function buildLocationList(locationData) {
+
+  /*
+  let sidebarHTML = '';
+
+  sidebarHTML = '<h3>' + currentFeature.properties[config.popupInfo.title] + ' - ' + currentFeature.properties[config.popupInfo.bags] + 'bag(s) </h3>'
+  +
+  '<img src="' + currentFeature.properties[config.popupInfo.entrancePhoto] + '" width="300">'
+  +
+  '<h4><b>Phone: </b><a href="tel:'+currentFeature.properties[config.popupInfo.phone]+'">'+currentFeature.properties[config.popupInfo.phone]+'</a></h4>'
+  +
+  '<h4> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.addressLink] + '" target="_blank"><b>Address: </b>' + currentFeature.properties[config.popupInfo.address] + '</a> </h4>'
+  +
+  '<h4><b>Unit: </b>' + currentFeature.properties[config.popupInfo.unit] + '</h4>'
+  +
+  '<p><b>Delivery Instructions: </b>' + currentFeature.properties[config.popupInfo.deliveryInstructions] + '</p>'
+   +
+  '<h5> <a class="txt-underline-on-hover link" href="' + currentFeature.properties[config.popupInfo.riderFeedbackLink] + '" target="_blank">Send the food bank feedback</a> </h5>';
+  */
+
   /* Add a new listing section to the sidebar. */
   const listings = document.getElementById('listings');
   listings.innerHTML = '';
@@ -94,18 +101,29 @@ function buildLocationList(locationData) {
     link.className = 'title';
     link.id = 'link-' + prop.id;
     link.innerHTML =
-      '<p style="line-height: 1.25">' + prop[columnHeaders[0]] + '</p>';
+      '<p style="line-height: 1.25">' + prop[columnHeaders.title] +' - '+prop[columnHeaders.bags]+ ' bag(s)</p>';
 
     /* Add details to the individual listing. */
     const details = listing.appendChild(document.createElement('div'));
     details.className = 'content';
 
-    for (let i = 1; i < columnHeaders.length; i++) {
+
+    //for (let i = 1; i < columnHeaders.length; i++) {
       const div = document.createElement('div');
-      div.innerText += prop[columnHeaders[i]];
+      div.innerHTML += '<img src="' + prop[columnHeaders.entrancePhoto] + '" width="300">'
+      +
+      '<div><a class="txt-bold btn btn--stroke mr0-ml mr12 px18-ml px6" href="tel:'+prop[columnHeaders.phone]+'"><b>Call: </b>'+prop[columnHeaders.phone]+'</a></div>'
+      +
+      '<div><a class="txt-bold btn btn--stroke mr0-ml mr12 px18-ml px6" href="' + prop[columnHeaders.addressLink] + '" target="_blank"><b>Address: </b>' + prop[columnHeaders.address] + '</a></div>'
+      +
+      '<h4><b>Unit: </b>' + prop[columnHeaders.unit] + '</h4>'
+      +
+      '<p><b>Delivery Instructions: </b>' + prop[columnHeaders.deliveryInstructions] + '</p>'
+       +
+      '<div><a class="txt-bold btn btn--stroke mr0-ml mr12 px18-ml px6" href="' + prop[columnHeaders.riderFeedbackLink] + '" target="_blank">Send the food bank feedback</a></div>';
       div.className;
       details.appendChild(div);
-    }
+    //}
 
     link.addEventListener('click', function () {
       const clickedListing = location.geometry.coordinates;
